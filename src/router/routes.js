@@ -1,11 +1,10 @@
+const MyLayout = () => import('layouts/MyLayout.vue');
+const Error404 = () => import('pages/Error404.vue');
 
 const routes = [
 	{
 		path: '/',
-		component: () => import('layouts/MyLayout.vue'),
-		children: [
-			{ path: '', component: () => import('pages/Index.vue') },
-		],
+		component: MyLayout,
 	},
 ];
 
@@ -13,7 +12,7 @@ const routes = [
 if (process.env.MODE !== 'ssr') {
 	routes.push({
 		path: '*',
-		component: () => import('pages/Error404.vue'),
+		component: Error404,
 	});
 }
 
